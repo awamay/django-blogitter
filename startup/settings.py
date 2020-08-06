@@ -20,13 +20,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0b$+$xd4h56(y(0p++uxya)2b(exb^)8j$1s&)x)9qy(hnslwx'
+#SECRET_KEY = '0b$+$xd4h56(y(0p++uxya)2b(exb^)8j$1s&)x)9qy(hnslwx'
+SECTERT_KEY = "76256c64ff28b7157b17829f3accfafe974363f4cccd4ad0"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = ['blogitter.herokuapp.com']
+#
 
 # Application definition
 
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -121,8 +124,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+#due to error during production deployment heroku
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
 #customized
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -139,4 +144,16 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'awanika6@gmail.com'
 EMAIL_HOST_PASSWORD = 'Awanika#1999'
+
+
+
+
+AWS_ACCESS_KEY_ID="AKIAZRFYI46KXLBI7M4S"
+AWS_SECRET_ACCESS_KEY="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"
+AWS_STORAGE_BUCKET_NAME="blogit-files"
+
+AWS_S3_FILE_OVERWRITE=False
+AWS_DEFAULT_ACL=None
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
